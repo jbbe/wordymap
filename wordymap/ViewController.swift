@@ -22,6 +22,20 @@ class ViewController: NSViewController {
         }
     }
 
+    // Properties
+    
+    @IBOutlet weak var partOfSpeechSelected: NSComboBox!
+    @IBOutlet weak var wordEntryField: NSTextField!
+    @IBOutlet weak var resultsTextBox: NSScrollView!
 
+
+
+    // Actions
+    @IBAction func searchPressed(_ sender: NSButton) {
+        
+    }
+    
+    
+    
 }
 
