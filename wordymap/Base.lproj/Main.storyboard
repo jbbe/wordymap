@@ -717,14 +717,11 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <action selector="wordEntry:" target="XfG-lQ-9wD" id="F60-Jt-Qu4"/>
-                                </connections>
                             </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Hw-C1-INL">
                                 <rect key="frame" x="20" y="196" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="partOfSpeech" placeholderString="Part of Speech" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="gZ1-7J-lbT">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="partOfSpeech" drawsBackground="YES" buttonBordered="NO" completes="NO" numberOfVisibleItems="5" id="gZ1-7J-lbT">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -747,38 +744,20 @@
                                     <action selector="searchPressed:" target="XfG-lQ-9wD" id="bwC-bT-nEH"/>
                                 </connections>
                             </button>
-                            <scrollView identifier="resultsBox" fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exi-MF-jEz">
-                                <rect key="frame" x="129" y="16" width="331" height="238"/>
+                            <textField identifier="resultsTextBox" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fAy-we-blM">
+                                <rect key="frame" x="183" y="27" width="265" height="223"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="aCR-DU-JHC">
-                                    <rect key="frame" x="0.0" y="0.0" width="331" height="238"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="bGm-SO-gXF">
-                                            <rect key="frame" x="0.0" y="0.0" width="331" height="238"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="331" height="238"/>
-                                            <size key="maxSize" width="342" height="10000000"/>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        </textView>
-                                    </subviews>
-                                </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="uqM-1g-mbS">
-                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="h14-3t-GGf">
-                                    <rect key="frame" x="315" y="0.0" width="16" height="238"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
+                                <textFieldCell key="cell" lineBreakMode="clipping" id="WMZ-Rr-9aN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="partOfSpeechSelected" destination="2Hw-C1-INL" id="0nN-mR-c8D"/>
-                        <outlet property="resultsTextBox" destination="exi-MF-jEz" id="Lv3-sH-QqR"/>
+                        <outlet property="resultsTextBox" destination="WMZ-Rr-9aN" id="fKz-6D-Kls"/>
                         <outlet property="wordEntryField" destination="Gw5-It-AVx" id="97C-6b-xBA"/>
                     </connections>
                 </viewController>
