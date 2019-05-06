@@ -13,7 +13,9 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         wordEntryField.delegate = self
-        
+        synonymsTextView.textStorage?.mutableString.setString("")
+        hypernimsTextView.textStorage?.mutableString.setString("")
+        antonymsTextView.textStorage?.mutableString.setString("")
         // Do any additional setup after loading the view.
     }
 
@@ -23,38 +25,27 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-//    func mountText() {
-//        let dir = FileManager.default
-//        print(dir)
-//        var documentsUrl: URL {
-//            return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//        }
-////        if let fileurl = dir.urls(for: FileManager.default, in: localDomainMask)
-//        documentsUrl.appendPathComponent("/.temp/output.txt")
-////        appendingPathComponent("  temp/output.txt") {
-//
-//            //reading
-//            do {
-//                let text2 = try String(contentsOf: fileurl, encoding: .utf8)
-//                resultsTextBox.stringValue = text2
-//            }
-//            catch {/* error handling here */}
-//        }
-//
-//    }
 
     // Properties
     
     @IBOutlet weak var partOfSpeechSelected: NSComboBox!
     @IBOutlet weak var wordEntryField: NSTextField!
-    @IBOutlet weak var resultsTextBox: NSTextFieldCell!
-    @IBOutlet weak var outputTextView: NSScrollView!
+    @IBOutlet weak var synonymsResultsTextBox: NSTextFieldCell!
+    @IBOutlet weak var antonymsResultsTextBox: NSClipView!
+   
+    //    @IBOutlet var antonymsResultsTextView: NSTextView!
+    
+    @IBOutlet var synonymsTextView: NSTextView!
+    @IBOutlet var antonymsTextView: NSTextView!
+    @IBOutlet var hypernimsTextView: NSTextView!
+    
+    
+    var antonymTextStorage: NSTextStorage?
     
     func wordEntryFieldShouldReturn(_ textField: NSTextField) -> Bool {
         // Hide the keyboard. idk if this is necessary for macos
         textField.resignFirstResponder()
         
-
         return true
     }
     
@@ -62,15 +53,33 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         wordEntryField.stringValue = textField.stringValue
     }
     
-
+    // Clears stored vals of textview if they exist
+    func clearStoredVals(textView: NSTextView?) {
+        if (textView?.textStorage) != nil {
+            textView?.textStorage?.mutableString.setString("")
+        }
+    }
     // Actions
     @IBAction func searchPressed(_ sender: NSButton) {
 //        let wN = wordNetModel();
         if (wordEntryField.stringValue != "WordBox"
             && partOfSpeechSelected.stringValue != "partOfSpeech"
             && wordEntryField.stringValue != "") {
-            resultsTextBox.stringValue = wordNetModel.queryWordNet(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
-//            resultsTextBox.stringValue = "nothing"
+//            synonymsResultsTextBox.stringValue = wordNetModel.queryWordNetSims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
+            
+            // Clear stored values from text views
+            
+//            synonymsTextView.textStorage?.mutableString.setString("")
+//            hypernimsTextView.textStorage?.mutableString.setString("")
+//            antonymsTextView.textStorage?.mutableString.setString("")
+            clearStoredVals(textView: synonymsTextView)
+            clearStoredVals(textView: antonymsTextView)
+            clearStoredVals(textView: hypernimsTextView)
+            
+            // Run queries and fill textviews
+            antonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetAnts(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            hypernimsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHypernims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            synonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetSims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
 
         }
     }

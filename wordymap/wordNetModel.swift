@@ -10,23 +10,136 @@ import Cocoa
 
 public class wordNetModel: NSObject {
     
-    class func queryWordNet(word: String, partOfSpeech:String) -> String {
+    //TODO add button to pop open a new window for tree
+    
+    class func queryWordNetSims(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
         case "Noun":
-            return nounCall(word: word)
+            return runQuery(word: word, option: "-synsn")
         case "Verb":
-            return verbCall(word: word)
+            return runQuery(word: word, option: "-synsv")
         case "Adverb":
-            return adverbCall(word: word)
+            return runQuery(word: word, option: "-synsr")
         case "Adjective":
-            return adjectiveCall(word: word)
+            return runQuery(word: word, option: "-synsa")
         default:
             return ""
         }
         
     }
     
+    class func queryWordNetAnts(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-antsn")
+        case "Verb":
+            return runQuery(word: word, option: "-antsv")
+        case "Adverb":
+            return runQuery(word: word, option: "-antsr")
+        case "Adjective":
+            return runQuery(word: word, option: "-antsa")
+        default:
+            return ""
+        }
+        
+    }
+    
+    class func queryWordNetDomain(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-domnn")
+        case "Verb":
+            return runQuery(word: word, option: "-domnv")
+        case "Adverb":
+            return runQuery(word: word, option: "-domnr")
+        case "Adjective":
+            return runQuery(word: word, option: "-domna")
+        default:
+            return ""
+        }
+        
+    }
+    
+    class func queryWordNetInDomain(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-domtn")
+        case "Verb":
+            return runQuery(word: word, option: "-domtv")
+        case "Adverb":
+            return runQuery(word: word, option: "-domtr")
+        case "Adjective":
+            return runQuery(word: word, option: "-domta")
+        default:
+            return ""
+        }
+        
+    }
+    
+    class func queryWordNetCompounds(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-grepn")
+        case "Verb":
+            return runQuery(word: word, option: "-grepv")
+        case "Adverb":
+            return runQuery(word: word, option: "-grepr")
+        case "Adjective":
+            return runQuery(word: word, option: "-grepa")
+        default:
+            return ""
+        }
+        
+    }
+    
+    
+    class func queryWordNetHypernims(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-hypen")
+        case "Verb":
+            return runQuery(word: word, option: "-hypev")
 
+        default:
+            return ""
+        }
+        
+    }
+    
+    
+    
+    class func queryWordNetHyponims(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-hypon")
+        case "Verb":
+            return runQuery(word: word, option: "-hypov")
+            
+        default:
+            return ""
+        }
+        
+    }
+    
+    class func queryWordNetFamily(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-famln")
+        case "Verb":
+            return runQuery(word: word, option: "-famlv")
+        case "Adverb":
+            return runQuery(word: word, option: "-famlr")
+        case "Adjective":
+            return runQuery(word: word, option: "-famla")
+        default:
+            return ""
+        }
+        
+    }
+
+
+
+   
     
     class func runQuery(word: String, option: String) -> String {
         // Create a Task instance (was NSTask on swift pre 3.0)
@@ -37,13 +150,13 @@ public class wordNetModel: NSObject {
         task.launchPath = "/usr/local/bin/wn"
 //        task.launchPath = "/backend/"
 //        task.arguments = ["./callWn.py", word, "-synsn"]
-        task.arguments = [word, "-synsn"]
+        task.arguments = [word, option]
 
         // Create a Pipe and make the task
         // put all the output there
         let pipe = Pipe()
         task.standardOutput = pipe
-        
+        print(option)
         do {
             // Launch the task
             try task.run()
@@ -61,25 +174,5 @@ public class wordNetModel: NSObject {
         return output! as String
     }
     
-    class func nounCall(word: String) -> String {
-        return runQuery(word: word, option: "-synsn")
-    }
-    
-    
-    class func verbCall(word: String) -> String {
-        return runQuery(word: word, option: "-synsv")
-    }
-    
-    class func adjectiveCall(word: String) -> String {
-        return runQuery(word: word, option: "-synsa")
-
-    }
-    
-    class func adverbCall(word: String) -> String {
-        return runQuery(word: word, option: "-synsr")
-
-    }
-    
-    
-
+  
 }
