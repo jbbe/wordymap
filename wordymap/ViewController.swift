@@ -16,6 +16,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         synonymsTextView.textStorage?.mutableString.setString("")
         hypernimsTextView.textStorage?.mutableString.setString("")
         antonymsTextView.textStorage?.mutableString.setString("")
+        famlTextView.textStorage?.mutableString.setString("")
         // Do any additional setup after loading the view.
     }
 
@@ -39,6 +40,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet var antonymsTextView: NSTextView!
     @IBOutlet var hypernimsTextView: NSTextView!
     
+    @IBOutlet var famlTextView: NSTextView!
     
     var antonymTextStorage: NSTextStorage?
     
@@ -80,9 +82,18 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             antonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetAnts(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             hypernimsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHypernims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             synonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetSims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            famlTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetFamily(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
 
         }
     }
+    
+    
+    @IBAction func openTreeWin(_ sender: NSButton) {
+        
+        
+        
+    }
+    
     
     // wordEntry delegate
     

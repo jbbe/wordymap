@@ -1,3 +1,5 @@
+Dependencies: Requires wordnet to be installed and be available at /usr/local/bin/wn
+
 When word is entered into the app it calls a python script which performs wordnet queries and writes the output to 
 files in temp directory which are replaced with blank files at exit.
 

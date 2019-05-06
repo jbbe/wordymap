@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E52F2532280B71700AB7701 /* textScrollViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52F2522280B71700AB7701 /* textScrollViewControllers.swift */; };
+		9E52F2552280D5D900AB7701 /* treeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E52F2542280D5D900AB7701 /* treeViewController.swift */; };
 		9E63EB76227C91700084175A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9E63EB75227C91700084175A /* README.md */; };
 		9E63EB7A227C92E60084175A /* temp in Resources */ = {isa = PBXBuildFile; fileRef = 9E63EB79227C92E60084175A /* temp */; };
 		9E63EB7E227C934B0084175A /* callWn.py in Resources */ = {isa = PBXBuildFile; fileRef = 9E63EB7D227C934B0084175A /* callWn.py */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		9E52F2522280B71700AB7701 /* textScrollViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textScrollViewControllers.swift; sourceTree = "<group>"; };
+		9E52F2542280D5D900AB7701 /* treeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = treeViewController.swift; sourceTree = "<group>"; };
 		9E63EB75227C91700084175A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E63EB79227C92E60084175A /* temp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = temp; sourceTree = "<group>"; };
 		9E63EB7D227C934B0084175A /* callWn.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = callWn.py; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				9EBB8CA6227B74BA00B22A0E /* wordymap.entitlements */,
 				9E63EB75227C91700084175A /* README.md */,
 				9E52F2522280B71700AB7701 /* textScrollViewControllers.swift */,
+				9E52F2542280D5D900AB7701 /* treeViewController.swift */,
 			);
 			path = wordymap;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E52F2552280D5D900AB7701 /* treeViewController.swift in Sources */,
 				9E52F2532280B71700AB7701 /* textScrollViewControllers.swift in Sources */,
 				9EBB8C9F227B74B800B22A0E /* ViewController.swift in Sources */,
 				9EBB8CC9227BA1E800B22A0E /* wordNetModel.swift in Sources */,
