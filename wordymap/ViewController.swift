@@ -31,18 +31,22 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var partOfSpeechSelected: NSComboBox!
     @IBOutlet weak var wordEntryField: NSTextField!
-    @IBOutlet weak var synonymsResultsTextBox: NSTextFieldCell!
-    @IBOutlet weak var antonymsResultsTextBox: NSClipView!
-   
-    //    @IBOutlet var antonymsResultsTextView: NSTextView!
-    
+
     @IBOutlet var synonymsTextView: NSTextView!
-    @IBOutlet var antonymsTextView: NSTextView!
+    //    @IBOutlet var synonymsTextView: NSTextView!
     @IBOutlet var hypernimsTextView: NSTextView!
-    
+    @IBOutlet var antonymsTextView: NSTextView!
+//    @IBOutlet var synonymsTextView: NSTextView!
+    //    @IBOutlet weak var antonymsTextView: NSScrollView!
+//    @IBOutlet var hypernimsTextView: NSTextView!
+    //    @IBOutlet var synonymsTextView: NSTextView!
+//    @IBOutlet var antonymsTextView: NSTextView!
+//    @IBOutlet var hypernimsTextView: NSTextView!
+//    @IBOutlet var hypernimsTextView: NSTextView!
     @IBOutlet var famlTextView: NSTextView!
     
-    var antonymTextStorage: NSTextStorage?
+//    @IBOutlet var famlTextView: NSTextView!
+    
     
     func wordEntryFieldShouldReturn(_ textField: NSTextField) -> Bool {
         // Hide the keyboard. idk if this is necessary for macos
