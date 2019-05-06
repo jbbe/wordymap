@@ -26,7 +26,9 @@ public class wordNetModel: NSObject {
         
     }
     
-    class func nounCall(word: String) -> String {
+
+    
+    class func runQuery(word: String, option: String) -> String {
         // Create a Task instance (was NSTask on swift pre 3.0)
         let task = Process()
         
@@ -55,22 +57,26 @@ public class wordNetModel: NSObject {
         // Get the data
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-        print(output)
+        print(output!)
         return output! as String
     }
     
+    class func nounCall(word: String) -> String {
+        return runQuery(word: word, option: "-synsn")
+    }
+    
+    
     class func verbCall(word: String) -> String {
-        // Create a Task instance (was NSTask on swift pre 3.0)
-        return "nothing here yet"
+        return runQuery(word: word, option: "-synsv")
     }
     
     class func adjectiveCall(word: String) -> String {
-        return "nothing here yet"
+        return runQuery(word: word, option: "-synsa")
 
     }
     
     class func adverbCall(word: String) -> String {
-        return "nothing here yet"
+        return runQuery(word: word, option: "-synsr")
 
     }
     
