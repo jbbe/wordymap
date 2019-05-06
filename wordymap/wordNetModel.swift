@@ -13,7 +13,7 @@ public class wordNetModel: NSObject {
     class func queryWordNet(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
         case "Noun":
-             return nounCall(word: word)
+            return nounCall(word: word)
         case "Verb":
             return verbCall(word: word)
         case "Adverb":
@@ -25,21 +25,23 @@ public class wordNetModel: NSObject {
         }
         
     }
-    class func runWordNetQuery(word: String, option: String) -> (String? , Int32) {
-        // Create a Task instance (was NSTask on swift pre 3.0)
-
     
+    class func nounCall(word: String) -> String {
+        // Create a Task instance (was NSTask on swift pre 3.0)
         let task = Process()
         
+//        return shell("wn", word, "-synsn")
         // Set the task parameters
-        // TODO: MULTIPLE OPTIONS AS INPUT, INPUT SANITIZATION
-        task.arguments = [word, option]
-        
+        task.launchPath = "/usr/local/bin/wn"
+//        task.launchPath = "/backend/"
+//        task.arguments = ["./callWn.py", word, "-synsn"]
+        task.arguments = [word, "-synsn"]
+
         // Create a Pipe and make the task
         // put all the output there
         let pipe = Pipe()
         task.standardOutput = pipe
-        print(task.arguments ?? "none")
+        
         do {
             // Launch the task
             try task.run()
@@ -47,24 +49,14 @@ public class wordNetModel: NSObject {
         }
         catch let error {
             print(error.localizedDescription, error.self)
-            return ("error", 13)
+            return "error"
         }
         
         // Get the data
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-        print(output ?? "No output")
-        return (output! as String, 0)
-    }
-    
-    
-    
-    class func nounCall(word: String) -> String {
-        let opt = "-synsn"
-        return runWordNetQuery(word: word, option: opt).0 ?? "No Output"
-        
-        
-        
+        print(output)
+        return output! as String
     }
     
     class func verbCall(word: String) -> String {
