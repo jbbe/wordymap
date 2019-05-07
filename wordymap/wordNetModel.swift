@@ -9,8 +9,8 @@
 import Cocoa
 
 public class wordNetModel: NSObject {
-    
-    //TODO add button to pop open a new window for tree
+    //TODO -pert(a | r)  Display pertainyms of searchstr.
+    //    -attr(n | a)  Display adjective values for noun attribute, or noun attributes of adjective values.
     
     class func queryWordNetSims(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
@@ -92,14 +92,17 @@ public class wordNetModel: NSObject {
         
     }
     
-    
-    class func queryWordNetHypernims(word: String, partOfSpeech:String) -> String {
+    // hypernims and pertynims
+    class func queryWordNetHyperAndPert(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
         case "Noun":
             return runQuery(word: word, option: "-hypen")
         case "Verb":
             return runQuery(word: word, option: "-hypev")
-
+        case "Adjective":
+            return runQuery(word: word, option: "-perta")
+        case "Adverb":
+            return runQuery(word: word, option: "-pertr")
         default:
             return ""
         }

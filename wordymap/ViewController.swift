@@ -46,7 +46,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet var synonymsTextView: NSTextView!
     @IBOutlet var hypernimsTextView: NSTextView!
     @IBOutlet var antonymsTextView: NSTextView!
-
+    @IBOutlet var hypoTextView: NSTextView!
     @IBOutlet var famlTextView: NSTextView!
     
 //    @IBOutlet var famlTextView: NSTextView!
@@ -80,11 +80,14 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             clearStoredVals(textView: synonymsTextView)
             clearStoredVals(textView: antonymsTextView)
             clearStoredVals(textView: hypernimsTextView)
+            clearStoredVals(textView: hypoTextView)
+            clearStoredVals(textView: famlTextView)
             
             // Run queries and fill textviews
-            antonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetAnts(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
-            hypernimsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHypernims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             synonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetSims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            antonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetAnts(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            hypernimsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHyperAndPert(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            hypoTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHyponims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             famlTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetFamily(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
 
         }
