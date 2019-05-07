@@ -749,14 +749,14 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqF-qz-PJh">
-                                                <rect key="frame" x="-1" y="670" width="99" height="32"/>
+                                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqF-qz-PJh">
+                                                <rect key="frame" x="5" y="670" width="99" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Tree (n/v)" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xYE-di-ORW">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="openTreeWin:" target="XfG-lQ-9wD" id="cnZ-J5-7Xa"/>
+                                                    <segue destination="fv4-yD-Bwj" kind="popover" popoverAnchorView="xqF-qz-PJh" popoverBehavior="t" preferredEdge="maxY" id="YNh-cJ-Pex"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -962,6 +962,51 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="178.5" y="1323"/>
+        </scene>
+        <!--Tree View Controller-->
+        <scene sceneID="x3w-FZ-Ygf">
+            <objects>
+                <viewController id="fv4-yD-Bwj" customClass="treeViewController" customModule="wordymap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="KRi-e4-Dlt">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="738"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCf-Pu-BMT">
+                                <rect key="frame" x="20" y="20" width="410" height="698"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="EsH-QH-wwn">
+                                    <rect key="frame" x="0.0" y="0.0" width="410" height="698"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" id="sTQ-kn-bdg">
+                                            <rect key="frame" x="0.0" y="0.0" width="410" height="698"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="410" height="698"/>
+                                            <size key="maxSize" width="430" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="opB-I5-ngc">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="wv8-he-6Hw">
+                                    <rect key="frame" x="394" y="0.0" width="16" height="698"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="treeTextView" destination="sTQ-kn-bdg" id="iGz-Ol-nUY"/>
+                    </connections>
+                </viewController>
+                <customObject id="4e1-4d-nY2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="746" y="1286"/>
         </scene>
     </scenes>
 </document>

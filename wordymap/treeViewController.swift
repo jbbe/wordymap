@@ -6,11 +6,15 @@
 //  Copyright © 2019 jbbe. All rights reserved.
 //
 
-//import Foundation
-//
-//class treeViewController: NSViewController {
-//    
-//    
-//    
-//    
-//}
+import Cocoa
+
+class treeViewController: NSViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        treeTextView.textStorage?.append(NSAttributedString(string:treeContents))
+    }
+    
+    var treeContents: String = ""
+    @IBOutlet var treeTextView: NSTextView!
+}

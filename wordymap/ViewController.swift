@@ -19,6 +19,18 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         famlTextView.textStorage?.mutableString.setString("")
         // Do any additional setup after loading the view.
     }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if (self.wordEntryField.stringValue != "WordBox"
+                    && (self.partOfSpeechSelected.stringValue == "Noun" || self.partOfSpeechSelected.stringValue == "Verb")
+                    && self.wordEntryField.stringValue != "") {
+            let treeVC: treeViewController = segue.destinationController as! treeViewController
+            treeVC.treeContents = wordNetModel.queryWordNetTree(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
+        } else {
+            let treeVC: treeViewController = segue.destinationController as! treeViewController
+            treeVC.treeContents = "Select noun or verb and enter a word"
+        }
+    }
 
     override var representedObject: Any? {
         didSet {
@@ -31,18 +43,10 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var partOfSpeechSelected: NSComboBox!
     @IBOutlet weak var wordEntryField: NSTextField!
-
     @IBOutlet var synonymsTextView: NSTextView!
-    //    @IBOutlet var synonymsTextView: NSTextView!
     @IBOutlet var hypernimsTextView: NSTextView!
     @IBOutlet var antonymsTextView: NSTextView!
-//    @IBOutlet var synonymsTextView: NSTextView!
-    //    @IBOutlet weak var antonymsTextView: NSScrollView!
-//    @IBOutlet var hypernimsTextView: NSTextView!
-    //    @IBOutlet var synonymsTextView: NSTextView!
-//    @IBOutlet var antonymsTextView: NSTextView!
-//    @IBOutlet var hypernimsTextView: NSTextView!
-//    @IBOutlet var hypernimsTextView: NSTextView!
+
     @IBOutlet var famlTextView: NSTextView!
     
 //    @IBOutlet var famlTextView: NSTextView!
@@ -65,19 +69,14 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             textView?.textStorage?.mutableString.setString("")
         }
     }
+    
     // Actions
     @IBAction func searchPressed(_ sender: NSButton) {
-//        let wN = wordNetModel();
         if (wordEntryField.stringValue != "WordBox"
             && partOfSpeechSelected.stringValue != "partOfSpeech"
             && wordEntryField.stringValue != "") {
-//            synonymsResultsTextBox.stringValue = wordNetModel.queryWordNetSims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
-            
+
             // Clear stored values from text views
-            
-//            synonymsTextView.textStorage?.mutableString.setString("")
-//            hypernimsTextView.textStorage?.mutableString.setString("")
-//            antonymsTextView.textStorage?.mutableString.setString("")
             clearStoredVals(textView: synonymsTextView)
             clearStoredVals(textView: antonymsTextView)
             clearStoredVals(textView: hypernimsTextView)
@@ -90,20 +89,5 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
         }
     }
-    
-    
-    @IBAction func openTreeWin(_ sender: NSButton) {
-        
-        
-        
-    }
-    
-    
-    // wordEntry delegate
-    
-    
-   
-
-    
 }
 

@@ -121,6 +121,19 @@ public class wordNetModel: NSObject {
         
     }
     
+    class func queryWordNetTree(word: String, partOfSpeech:String) -> String {
+        switch(partOfSpeech) {
+        case "Noun":
+            return runQuery(word: word, option: "-treen")
+        case "Verb":
+            return runQuery(word: word, option: "-treev")
+            
+        default:
+            return ""
+        }
+        
+    }
+    
     class func queryWordNetFamily(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
         case "Noun":
