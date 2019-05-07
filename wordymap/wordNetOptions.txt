@@ -1,0 +1,54 @@
+-faml(n | v | a | r)
+Display familiarity and polysemy information for searchstr.
+
+-hype(n | v)   Recursively display hypernym (superordinate) tree for searchstr (searchstr IS A KIND OF _____ relation).
+
+-hypo(n | v)   Display immediate hyponyms (subordinates) for searchstr (_____ IS A KIND OF searchstr relation).
+
+-tree(n | v)   Display hyponym (subordinate) tree for searchstr.  This is a recursive search that finds the hyponyms of each hyponym.
+
+-coor(n | v)   Display the coordinates (sisters) of searchstr.  This search prints the immediate hypernym for each synset that contains searchstr and the  hypernym's  immediate
+hyponyms.
+
+-deri(n | v)   Display derivational morphology links between noun and verb forms.
+
+-domn(n | v | a | r)
+Display domain that searchstr has been classified in.
+
+-domt(n | v | a | r)
+Display all terms classified as members of the searchstr's domain.
+
+-subsn         Display substance meronyms of searchstr (HAS SUBSTANCE relation).
+
+-partn         Display part meronyms of searchstr (HAS PART relation).
+
+-membn         Display member meronyms of searchstr (HAS MEMBER relation).
+
+-meron         Display all meronyms of searchstr (HAS PART, HAS MEMBER, HAS SUBSTANCE relations).
+
+-hmern         Display meronyms for searchstr tree.  This is a recursive search that prints all the meronyms of searchstr and all of its hypernyms.
+
+-sprtn         Display part of holonyms of searchstr (PART OF relation).
+
+-smemn         Display member of holonyms of searchstr (MEMBER OF relation).
+
+-ssubn         Display substance of holonyms of searchstr (SUBSTANCE OF relation).
+
+-holon         Display all holonyms of searchstr (PART OF, MEMBER OF, SUBSTANCE OF relations).
+
+-hholn         Display holonyms for searchstr tree.  This is a recursive search that prints all the holonyms of searchstr and all of each holonym's holonyms.
+
+-entav         Display entailment relations of searchstr.
+
+-framv         Display applicable verb sentence frames for searchstr.
+
+-causv         Display cause to relations of searchstr.
+
+-pert(a | r)  Display pertainyms of searchstr.
+
+-attr(n | a)  Display adjective values for noun attribute, or noun attributes of adjective values.
+
+-grep(n | v | a | r)
+List compound words containing searchstr as a substring.
+
+from WordNet 3.0  

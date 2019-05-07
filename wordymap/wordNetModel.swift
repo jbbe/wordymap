@@ -12,12 +12,24 @@ public class wordNetModel: NSObject {
     //TODO -pert(a | r)  Display pertainyms of searchstr.
     //    -attr(n | a)  Display adjective values for noun attribute, or noun attributes of adjective values.
     
+    
+    // -syns(n | v | a | r)
+//    Display synonyms and immediate hypernyms of synsets containing searchstr.  Synsets are ordered by estimated frequency of use.  For adjectives, if searchstr is in
+//    a head synset, the cluster's satellite synsets are displayed in place of hypernyms.  If searchstr is in a satellite synset, its head synset is also displayed.
+//
+//    -simsv         Display verb synonyms and immediate hypernyms of synsets containing searchstr.  Synsets are grouped by similarity of meaning.
+//
+
+    //Synonyms
     class func queryWordNetSims(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
         case "Noun":
             return runQuery(word: word, option: "-synsn")
         case "Verb":
-            return runQuery(word: word, option: "-synsv")
+            let syns = runQuery(word: word, option: "-synsv")
+            let sims = runQuery(word: word, option: "-simsv")
+            print(sims)
+            return (syns) + "\n" + (sims)
         case "Adverb":
             return runQuery(word: word, option: "-synsr")
         case "Adjective":
@@ -92,13 +104,14 @@ public class wordNetModel: NSObject {
         
     }
     
-    // hypernims and pertynims
-    class func queryWordNetHyperAndPert(word: String, partOfSpeech:String) -> String {
+    //hypernims are included with synonyms do different q
+    // coor and pertynims
+    class func queryWordNetCoorAndPert(word: String, partOfSpeech:String) -> String {
         switch(partOfSpeech) {
         case "Noun":
-            return runQuery(word: word, option: "-hypen")
+            return runQuery(word: word, option: "-coorn")
         case "Verb":
-            return runQuery(word: word, option: "-hypev")
+            return runQuery(word: word, option: "-coorv")
         case "Adjective":
             return runQuery(word: word, option: "-perta")
         case "Adverb":
@@ -153,19 +166,74 @@ public class wordNetModel: NSObject {
         
     }
 
-
+//    -subsn         Display substance meronyms of searchstr (HAS SUBSTANCE relation).
+//
+//    -partn         Display part meronyms of searchstr (HAS PART relation).
+//
+//    -membn         Display member meronyms of searchstr (HAS MEMBER relation).
+//
+//    -meron         Display all meronyms of searchstr (HAS PART, HAS MEMBER, HAS SUBSTANCE relations).
+//
+//    -hmern         Display meronyms for searchstr tree.  This is a recursive search that prints all the meronyms of searchstr and all of its hypernyms.
+//
+//    -sprtn         Display part of holonyms of searchstr (PART OF relation).
+//
+//    -smemn         Display member of holonyms of searchstr (MEMBER OF relation).
+//
+//    -ssubn         Display substance of holonyms of searchstr (SUBSTANCE OF relation).
+//
+//    -holon         Display all holonyms of searchstr (PART OF, MEMBER OF, SUBSTANCE OF relations).
+//
+//    -hholn         Display holonyms for searchstr tree.  This is a recursive search that prints all the holonyms of searchstr and all of each holonym's holonyms.
 
    
+    class func querySubs(word: String) -> String {
+        return runQuery(word: word, option: "-subsn")
+    }
+    
+    class func queryPart(word: String) -> String {
+        return runQuery(word: word, option: "-partn")
+    }
+    
+    class func queryMemb(word: String) -> String {
+        return runQuery(word: word, option: "-membn")
+    }
+    
+    class func queryMeron(word: String) -> String {
+        return runQuery(word: word, option: "-meron")
+    }
+    
+    class func queryHmern(word: String) -> String {
+        return runQuery(word: word, option: "-hmern")
+    }
+    
+    class func querySprt(word: String) -> String {
+        return runQuery(word: word, option: "-sprtn")
+    }
+    
+    class func querySmem(word: String) -> String {
+        return runQuery(word: word, option: "-smemn")
+    }
+    
+    class func querySsub(word: String) -> String {
+        return runQuery(word: word, option: "-ssubn")
+    }
+    
+    class func queryHolo(word: String) -> String {
+        return runQuery(word: word, option: "-holosn")
+    }
+    
+    class func queryHholn(word: String) -> String {
+        return runQuery(word: word, option: "-hholn")
+    }
     
     class func runQuery(word: String, option: String) -> String {
         // Create a Task instance (was NSTask on swift pre 3.0)
         let task = Process()
         
-//        return shell("wn", word, "-synsn")
         // Set the task parameters
         task.launchPath = "/usr/local/bin/wn"
-//        task.launchPath = "/backend/"
-//        task.arguments = ["./callWn.py", word, "-synsn"]
+
         task.arguments = [word, option]
 
         // Create a Pipe and make the task

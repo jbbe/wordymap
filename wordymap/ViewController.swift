@@ -20,15 +20,29 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if (self.wordEntryField.stringValue != "WordBox"
-                    && (self.partOfSpeechSelected.stringValue == "Noun" || self.partOfSpeechSelected.stringValue == "Verb")
-                    && self.wordEntryField.stringValue != "") {
-            let treeVC: treeViewController = segue.destinationController as! treeViewController
-            treeVC.treeContents = wordNetModel.queryWordNetTree(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
-        } else {
-            let treeVC: treeViewController = segue.destinationController as! treeViewController
-            treeVC.treeContents = "Select noun or verb and enter a word"
+        if segue.identifier == "compoundSegue" {
+            if (self.wordEntryField.stringValue != "WordBox" && self.wordEntryField.stringValue != "") {
+                let compVC: CompoundViewController = segue.destinationController as! CompoundViewController
+                compVC.compoundContents = wordNetModel.queryWordNetCompounds(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
+            }
+        } else if segue.identifier == "treeSegue" {
+            if (self.wordEntryField.stringValue != "WordBox"
+                && (self.partOfSpeechSelected.stringValue == "Noun" || self.partOfSpeechSelected.stringValue == "Verb")
+                && self.wordEntryField.stringValue != "") {
+                let treeVC: treeViewController = segue.destinationController as! treeViewController
+                treeVC.treeContents = wordNetModel.queryWordNetTree(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
+            } else {
+                let treeVC: treeViewController = segue.destinationController as! treeViewController
+                treeVC.treeContents = "Select noun or verb and enter a word"
+            }
+        } else if segue.identifier == "nounSegue" {
+            if self.wordEntryField.stringValue != "WordBox" && self.partOfSpeechSelected.stringValue == "Noun"
+                && self.wordEntryField.stringValue != "" {
+                let nounVC: nounViewController = segue.destinationController as! nounViewController
+                nounVC.word = wordEntryField.stringValue
+            }
         }
     }
 
@@ -71,11 +85,25 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
     
     // Actions
+    // A search can be submitted by a button press or pressing tab or enter on the word or part of speech entries
+    
     @IBAction func searchPressed(_ sender: NSButton) {
+        performSearch()
+    }
+    
+    @IBAction func partOfSpeechSelected(_ sender: NSComboBox) {
+        performSearch()
+    }
+    
+    @IBAction func wordEntered(_ sender: NSTextField) {
+        performSearch()
+    }
+    
+    func performSearch() {
         if (wordEntryField.stringValue != "WordBox"
             && partOfSpeechSelected.stringValue != "partOfSpeech"
             && wordEntryField.stringValue != "") {
-
+            
             // Clear stored values from text views
             clearStoredVals(textView: synonymsTextView)
             clearStoredVals(textView: antonymsTextView)
@@ -86,10 +114,10 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             // Run queries and fill textviews
             synonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetSims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             antonymsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetAnts(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
-            hypernimsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHyperAndPert(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
+            hypernimsTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetCoorAndPert(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             hypoTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetHyponims(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
             famlTextView.textStorage?.append(NSAttributedString(string: wordNetModel.queryWordNetFamily(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)))
-
+            
         }
     }
 }
