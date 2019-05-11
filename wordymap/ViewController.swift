@@ -106,6 +106,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
     
     func performSearch() {
+        //TODO make parts of speech case insensitive
+        
         if (wordEntryField.stringValue != "WordBox"
             && partOfSpeechSelected.stringValue != "partOfSpeech"
             && wordEntryField.stringValue != "") {
