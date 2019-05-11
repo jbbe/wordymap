@@ -245,6 +245,7 @@ public class wordNetModel: NSObject {
         return runQuery(word: word, option: "-causv")
     }
     
+    //Attributes that connect nouns to adjectives and vice versa
     class func queryAdj(word: String, partOfSpeech: String) -> String {
         if(partOfSpeech == "Noun") {
             return runQuery(word: word, option: "-attrn")
