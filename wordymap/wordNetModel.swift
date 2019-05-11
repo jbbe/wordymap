@@ -245,6 +245,16 @@ public class wordNetModel: NSObject {
         return runQuery(word: word, option: "-causv")
     }
     
+    class func queryAdj(word: String, partOfSpeech: String) -> String {
+        if(partOfSpeech == "Noun") {
+            return runQuery(word: word, option: "-attrn")
+
+        } else if partOfSpeech == "Adjective" {
+            return runQuery(word: word, option: "-attra")
+        }
+        return ""
+    }
+    
     class func runQuery(word: String, option: String) -> String {
         // Create a Task instance (was NSTask on swift pre 3.0)
         let task = Process()

@@ -31,17 +31,30 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             if (self.wordEntryField.stringValue != "WordBox"
                 && (self.partOfSpeechSelected.stringValue == "Noun" || self.partOfSpeechSelected.stringValue == "Verb")
                 && self.wordEntryField.stringValue != "") {
-                let treeVC: treeViewController = segue.destinationController as! treeViewController
+                let treeVC: SingleTextViewController = segue.destinationController as! SingleTextViewController
                 treeVC.treeContents = wordNetModel.queryWordNetTree(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
             } else {
-                let treeVC: treeViewController = segue.destinationController as! treeViewController
+                let treeVC: SingleTextViewController = segue.destinationController as! SingleTextViewController
                 treeVC.treeContents = "Select noun or verb and enter a word"
             }
+        } else if segue.identifier == "nounAdjSeg" {
+            if (self.wordEntryField.stringValue != "WordBox"
+                && (self.partOfSpeechSelected.stringValue == "Noun" || self.partOfSpeechSelected.stringValue == "Adjective")
+                && self.wordEntryField.stringValue != "") {
+                let treeVC: SingleTextViewController = segue.destinationController as! SingleTextViewController
+                treeVC.treeContents = wordNetModel.queryAdj(word: wordEntryField.stringValue, partOfSpeech: partOfSpeechSelected.stringValue)
+                print(treeVC.treeContents)
+            } else {
+                let treeVC: SingleTextViewController = segue.destinationController as! SingleTextViewController
+                treeVC.treeContents = "Select noun or adjective and enter a word"
+            }
+            
         } else if segue.identifier == "nounSegue" {
             if self.wordEntryField.stringValue != "WordBox" && self.partOfSpeechSelected.stringValue == "Noun"
                 && self.wordEntryField.stringValue != "" {
                 let nounVC: nounViewController = segue.destinationController as! nounViewController
                 nounVC.word = wordEntryField.stringValue
+                
             }
         } else if segue.identifier == "verbSegue" {
             if self.wordEntryField.stringValue != "WordBox" && self.partOfSpeechSelected.stringValue == "Verb"
@@ -65,9 +78,9 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet weak var wordEntryField: NSTextField!
     @IBOutlet var synonymsTextView: NSTextView!
     @IBOutlet var hypernimsTextView: NSTextView!
-    @IBOutlet var antonymsTextView: NSTextView!
     @IBOutlet var hypoTextView: NSTextView!
     @IBOutlet var famlTextView: NSTextView!
+    @IBOutlet var antonymsTextView: NSTextView!
     
 //    @IBOutlet var famlTextView: NSTextView!
     
