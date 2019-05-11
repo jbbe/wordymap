@@ -43,6 +43,12 @@ class ViewController: NSViewController, NSTextFieldDelegate {
                 let nounVC: nounViewController = segue.destinationController as! nounViewController
                 nounVC.word = wordEntryField.stringValue
             }
+        } else if segue.identifier == "verbSegue" {
+            if self.wordEntryField.stringValue != "WordBox" && self.partOfSpeechSelected.stringValue == "Verb"
+                && self.wordEntryField.stringValue != "" {
+                let verbVC: VerbViewController = segue.destinationController as! VerbViewController
+                verbVC.word = wordEntryField.stringValue
+            }
         }
     }
 

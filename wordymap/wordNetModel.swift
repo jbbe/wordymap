@@ -226,6 +226,24 @@ public class wordNetModel: NSObject {
     class func queryHholn(word: String) -> String {
         return runQuery(word: word, option: "-hholn")
     }
+//    -entav         Display entailment relations of searchstr.
+//
+//    -framv         Display applicable verb sentence frames for searchstr.
+//
+//    -causv         Display cause to relations of searchstr.
+//
+
+    class func queryEntav(word: String) -> String {
+        return runQuery(word: word, option: "-entav")
+    }
+    
+    class func queryFramv(word: String) -> String {
+        return runQuery(word: word, option: "-framv")
+    }
+    
+    class func queryCausv(word: String) -> String {
+        return runQuery(word: word, option: "-causv")
+    }
     
     class func runQuery(word: String, option: String) -> String {
         // Create a Task instance (was NSTask on swift pre 3.0)

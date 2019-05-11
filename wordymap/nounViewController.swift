@@ -44,6 +44,7 @@ class nounViewController: NSViewController {
     @IBOutlet var hholnTextView: NSTextView!
     var word: String = ""
 
+
 }
 
 

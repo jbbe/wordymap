@@ -12,6 +12,7 @@
 		9E7B208A22812D940023AFD4 /* wordNetOptions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9E7B208922812D940023AFD4 /* wordNetOptions.txt */; };
 		9E7B208D22812DED0023AFD4 /* nounViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7B208B22812DED0023AFD4 /* nounViewController.swift */; };
 		9E7B209122812FF00023AFD4 /* CompoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7B208F22812FF00023AFD4 /* CompoundViewController.swift */; };
+		9E9AD1582283557100A84F68 /* VerbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9AD1562283557100A84F68 /* VerbViewController.swift */; };
 		9EBB8C9D227B74B800B22A0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB8C9C227B74B800B22A0E /* AppDelegate.swift */; };
 		9EBB8C9F227B74B800B22A0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB8C9E227B74B800B22A0E /* ViewController.swift */; };
 		9EBB8CA1227B74BA00B22A0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBB8CA0227B74BA00B22A0E /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		9E7B208922812D940023AFD4 /* wordNetOptions.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = wordNetOptions.txt; sourceTree = "<group>"; };
 		9E7B208B22812DED0023AFD4 /* nounViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nounViewController.swift; sourceTree = "<group>"; };
 		9E7B208F22812FF00023AFD4 /* CompoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundViewController.swift; sourceTree = "<group>"; };
+		9E9AD1562283557100A84F68 /* VerbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerbViewController.swift; sourceTree = "<group>"; };
 		9EBB8C99227B74B800B22A0E /* wordymap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wordymap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBB8C9C227B74B800B22A0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EBB8C9E227B74B800B22A0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				9E7B208B22812DED0023AFD4 /* nounViewController.swift */,
 				9EBB8CA0227B74BA00B22A0E /* Assets.xcassets */,
 				9EBB8CA2227B74BA00B22A0E /* Main.storyboard */,
+				9E9AD1562283557100A84F68 /* VerbViewController.swift */,
 				9E7B208F22812FF00023AFD4 /* CompoundViewController.swift */,
 				9EBB8CA5227B74BA00B22A0E /* Info.plist */,
 				9EBB8CA6227B74BA00B22A0E /* wordymap.entitlements */,
@@ -291,6 +294,7 @@
 				9E7B209122812FF00023AFD4 /* CompoundViewController.swift in Sources */,
 				9EBB8CC9227BA1E800B22A0E /* wordNetModel.swift in Sources */,
 				9EBB8C9D227B74B800B22A0E /* AppDelegate.swift in Sources */,
+				9E9AD1582283557100A84F68 /* VerbViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
