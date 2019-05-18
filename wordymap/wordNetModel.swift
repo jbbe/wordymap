@@ -261,7 +261,7 @@ public class wordNetModel: NSObject {
         let task = Process()
         
         // Set the task parameters
-        task.launchPath = "/usr/local/bin/wn"
+        task.launchPath = "/Users/joanna/Documents/wordymaps/wordymap/wordymap/bin/WordNet-3.0/src/wn"
 
         task.arguments = [word, option]
 

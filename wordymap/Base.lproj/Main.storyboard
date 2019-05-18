@@ -1551,7 +1551,7 @@
                                                         </textView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9S1-Gn-M4b">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="9S1-Gn-M4b">
                                                     <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -1584,7 +1584,7 @@
                                                         </textView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="chg-Ga-WGn">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="chg-Ga-WGn">
                                                     <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -1617,7 +1617,7 @@
                                                         </textView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Boi-Ck-wL2">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Boi-Ck-wL2">
                                                     <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
